@@ -6,11 +6,11 @@ from django.contrib.auth import login, logout, authenticate
 
 def user_logout(request):
     logout(request)
-    return redirect("logout")
+    return redirect("profile")
 
 
 def user_profile(request):
-    print(redirect.user)
+
     return render(request, "user/profile.html", {"user": request.user})
 
 
@@ -24,6 +24,7 @@ def user_login(request):
         elif request.POST.get("login"):
             username = request.POST.get("username")
             password = request.POST.get("password")
+
             if username == "" or password == "":
                 message = "帳號或密碼不能為空!"
             else:
@@ -38,9 +39,7 @@ def user_login(request):
                 else:
                     message = "帳號或密碼錯誤!"
 
-    return render(
-        request, "user/login.html", {"message": message, "username": username}
-    )
+    return render(request, "user/login.html", {"message": message})
 
 
 def user_register(request):
