@@ -1,11 +1,41 @@
 {% extends "base.html" %}
 {% block title %}待辦事項{% endblock %}
 {% block style %}
+<!-- {% endblock %} -->
+<style>
+    .todo-list {
+        background-color: azure;
+        margin: 12px auto;
+        width: 500px;
+    }
+
+    .date {
+        background-color: orange;
+        color: white
+    }
+
+    .text {
+        background-color: aque;
+        height: 100px;
+        border-radius: 6px;
+        padding: 6px;
+    }
+</style>
 {% endblock %}
-
-
 {% block content %}
 <h1>TodoList</h1>
-
-
+{% for todo in todos %}
+<div class="todo-list">
+    <p class="date">{{todo.created}}</p>
+    <!-- <li>{{todo.created}}</li> -->
+    <p class="title"><u>{{todo.title}}</u>
+        {{todo.title}}
+        {% if todo.important %}
+        (重要)
+        {% endif %}
+    </p>
+    <li>{{todo.text}}</li>
+    <li>{{todo.important}}</li>
+</div>
+{% endfor %}
 {% endblock %}
