@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}待辦事項{% endblock %}
 {% block style %}
-<!-- {% endblock %} -->
+
 <style>
     .todo-list {
         background-color: azure;
@@ -28,14 +28,17 @@
 <div class="todo-list">
     <p class="date">{{todo.created}}</p>
     <!-- <li>{{todo.created}}</li> -->
-    <p class="title"><u>{{todo.title}}</u>
-        {{todo.title}}
+    <p class="title">
+        <a href="{% url 'view_todo' todo.id %}">{{todo.title}}</a>
+
         {% if todo.important %}
-        (重要)
+        <span class="important">(重要)</span>
+
         {% endif %}
     </p>
-    <li>{{todo.text}}</li>
-    <li>{{todo.important}}</li>
+    </p>
+    <p class="text">{{todo.text}}</p>
+
 </div>
 {% endfor %}
 {% endblock %}
