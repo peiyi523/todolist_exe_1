@@ -4,9 +4,10 @@
 
 <style>
     .todo-list {
-        background-color: azure;
+        background-color: #FAFAD2;
         margin: 12px auto;
         width: 500px;
+        height: 200px;
     }
 
     .date {
@@ -20,6 +21,14 @@
         border-radius: 6px;
         padding: 6px;
     }
+
+    .title {
+        color: red;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: blod;
+        font-size: 24px;
+
+    }
 </style>
 {% endblock %}
 {% block content %}
@@ -27,6 +36,7 @@
 {% for todo in todos %}
 <div class="todo-list">
     <p class="date">{{todo.created}}</p>
+    {{todo.date_completed}}
     <!-- <li>{{todo.created}}</li> -->
     <p class="title">
         <a href="{% url 'view_todo' todo.id %}">{{todo.title}}</a>
