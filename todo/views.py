@@ -17,6 +17,7 @@ def todo(request):
 
 
 def view_todo(request, id):
+    todo = None
     try:
         todo = Todo.objects.get(id=id)
         print(todo)
