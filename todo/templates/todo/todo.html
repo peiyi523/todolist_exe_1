@@ -32,12 +32,19 @@
 </style>
 {% endblock %}
 {% block content %}
-<h1>TodoList</h1>
+<h1>
+    {% if completed %}
+    Completed-Todo
+    {% else %}
+    TodoList
+    {% endif % }
+
+    TodoList</h1>
 {% for todo in todos %}
 <div class="todo-list">
     <p class="date">{{todo.created}}</p>
     {{todo.date_completed}}
-    <!-- <li>{{todo.created}}</li> -->
+    <p>{{todo.created}}</p>
     <p class="title">
         <a href="{% url 'view_todo' todo.id %}">{{todo.title}}</a>
 
@@ -45,9 +52,10 @@
         <span class="important">(重要)</span>
 
         {% endif %}
-    </p>
+
     </p>
     <p class="text">{{todo.text}}</p>
+    <a href="{% url 'delete_todo' todo.id %}" onclick="return confirmDelete()">刪除</a>
 
 </div>
 {% endfor %}

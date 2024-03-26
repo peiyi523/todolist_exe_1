@@ -4,6 +4,26 @@ from .forms import TodoForm
 from datetime import datetime
 
 
+def delete_todo(request, id):
+    try:
+        todo = Todo.objects.get(id=id)
+        todo.delete()
+    except Exception as e:
+        print(e)
+    return redirect("todolist")
+
+
+def completed_todo(request):
+    todos = None
+    completed = True
+    if request.user.is_authenticated:
+        todos = Todo.objects.filter(user=request.user, completed=True).order_by(
+            "-created"
+        )
+
+    return render(request, "todo/todo.html", {"todos": todos, "completed": completed})
+
+
 def create_todo(request):
     # GET
     message = ""
