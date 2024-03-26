@@ -11,6 +11,7 @@ class Todo(models.Model):
     important = models.BooleanField(default=False)
     # user_id => todo_id
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    completed = models.BooleanField(default=False)
 
     def __str__(self):
         return f"[{self.id}] {self.created}-{self.title}-{self.user}"

@@ -4,7 +4,15 @@
 {% endblock %}
 {% block content %}
 
-<h1>Todo</h1>
-{{todo}}
-
+<h1>Todo</h1><br>
+建立時間:{{todo.created}}
+{% if todo.date_complated%}
+完成時間:{{todo.date_complated}}
+{% endif %}
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="更新" name="update">
+    <input type="submit" value="刪除" name="delete">
+</form>
 {% endblock %}
