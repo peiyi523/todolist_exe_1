@@ -7,7 +7,7 @@ class Todo(models.Model):
     title = models.CharField(max_length=100, null=False)
     text = models.TextField(blank=True)
     created = models.DateField(auto_now_add=True)
-    date_completed = models.DateTimeField(blank=True)
+    date_completed = models.DateTimeField(blank=True, null=True)
     important = models.BooleanField(default=False)
     # user_id => todo_id
     user = models.ForeignKey(User, on_delete=models.CASCADE)

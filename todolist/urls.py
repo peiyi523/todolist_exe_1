@@ -24,3 +24,5 @@ urlpatterns = [
     path("user/", include("user.urls")),
     path("", include("todo.urls")),
 ]
+
+
