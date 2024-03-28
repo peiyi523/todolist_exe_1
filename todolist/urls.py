@@ -23,6 +23,7 @@ urlpatterns = [
     # 分配user主要進入點
     path("user/", include("user.urls")),
     path("", include("todo.urls")),
+    
 ]
 
 
