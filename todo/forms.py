@@ -8,3 +8,6 @@ class TodoForm(ModelForm):
         model = Todo
         # fields = "__all__"
         fields = ["title", "text", "important", "completed"]
+
+
+
